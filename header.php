@@ -43,7 +43,3 @@ $resumenHeader = calcularResumenCarrito($_SESSION["carrito"], $catalogo);
         <a href="carrito.php" class="btn-carrito-flotante shadow-lg">
             🛒 <span class="badge bg-danger rounded-pill"> <?php echo $resumenHeader["totalUnidades"]; ?> </span>
         </a>
-    
-    </body>
-
-</html>
