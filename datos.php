@@ -45,5 +45,38 @@ $catalogo = [
 ];
 
 // Variables, Operadores, Estructuras de Control y Funciones
-function calcularResumenCarrito($carrito, $catalogo)
+function calcularResumenCarrito($carrito, $catalogo) {
+    $subtotal = 0;
+    $totalUnidades = 0;
+
+    foreach ($carrito as $id => $cantidad) {
+        if (isset($catalogo[$id])) {
+            $subtotal += $catalogo[$id]->precio * $cantidad; // Operador aritmetico
+            $totalUnidades += $cantidad;
+        }
+    }
+
+    // Estructuraas de Control (Descuentos por volumen)
+    $porcentajeDescuento = 0;
+    if ($totalUnidades > 10) {
+        $porcentajeDescuento = 30;
+    } elseif ($totalUnidades > 5) {
+        $porcentajeDescuento = 20;
+    }
+
+    $montoDescuento = $subtotal * ($porcentajeDescuento / 100);
+    $subtotalConDescuento = $subtotal - $montoDescuento;
+
+    // Envio gratis a partir de $300 MXN (si hay productos en el carrito)
+    $costoEnvio = ($totalUnidades > 0 && $subtotalConDescuento < 300) ? 100.00 : 0.00;
+    $totalFinal = $subtotalConDescuento + $costoEnvio;
+
+    return [
+        'totalUnidades' => $totalUnidades,
+        'subtotal' => $subtotal,
+        'porcentajeDescuento' => $porcentajeDescuento;
+        'montoDescuento' => $costoEnvio;
+        'totalFinal' => $totalFinal
+    ];
+}
 ?>
