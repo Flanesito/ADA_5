@@ -5,7 +5,7 @@ require_once "datos.php";
 // Opcion para cerrar sesion (Intercambio por GET y Sesiones)
 if (isset($_GET['logout'])) {
     session_destroy();
-    header("Location: loging.php"); // Headers HTTP
+    header("Location: login.php"); // Headers HTTP
     exit;
 }
 
@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if (!empty($nombreUsuario)) {
         // Manejo de Sesiones - Guardamos al cliente
-        $_SESION["usuario"] = $nombreUsuario;
+        $_SESSION["usuario"] = $nombreUsuario;
         // Headers HTTP - Redireccion hacia la tienda
         header("Location: index.php?bienvenida=1");
         exit;
