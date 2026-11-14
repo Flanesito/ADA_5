@@ -5,7 +5,7 @@ require_once "datos.php";
 $alertaProducto = "";
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["id_producto"])) {
     $id = (int)$_POST["id_producto"];
-    if = (isset($catalogo[$id])) {
+    if (isset($catalogo[$id])) {
         $_SESSION["carrito"][$id] = ($_SESSION["carrito"][$id] ?? 0) + 1;
         $alertaProducto = $catalogo[$id]->nombre;
     }
