@@ -3,9 +3,9 @@ require_once "datos.php";
 
 // Modificar o eliminar productos de la sesion antes del header
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["accion"])) {
-    4id = (int)($_POST["id_producto"] ?? 0);
+    $id = (int)($_POST["id_producto"] ?? 0);
 
-    if ($_POST["accion"] === "actualizar" && isset($_POST[""cantidad])) {
+    if ($_POST["accion"] === "actualizar" && isset($_POST["cantidad"])) {
         $nuevaCant = (int)$_POST["cantidad"];
         if ($nuevaCant > 0) {
             $_SESSION["carrito"][$id] = $nuevaCant; // Modificar cantidad

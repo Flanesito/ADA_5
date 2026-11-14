@@ -18,6 +18,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (!empty($nombreUsuario)) {
         // Manejo de Sesiones - Guardamos al cliente
         $_SESSION["usuario"] = $nombreUsuario;
+
+        // Base de datos para guardar los datos de inicio de sesion
+        $conn = new mysqli("localhost", "root", "", "mysql");
+        $stmt = $conn->prepare("INSERT INTO accesos_tienda (usuario) VALUES (?)");
+        $stmt->bind_param("s", $nombreUsuario);
+        $stmt->execute();
+        $stmt->close();
+        $conn->close();
         // Headers HTTP - Redireccion hacia la tienda
         header("Location: index.php?bienvenida=1");
         exit;
