@@ -74,8 +74,8 @@ function calcularResumenCarrito($carrito, $catalogo) {
     return [
         'totalUnidades' => $totalUnidades,
         'subtotal' => $subtotal,
-        'porcentajeDescuento' => $porcentajeDescuento;
-        'montoDescuento' => $costoEnvio;
+        'porcentajeDescuento' => $porcentajeDescuento,
+        'montoDescuento' => $costoEnvio,
         'totalFinal' => $totalFinal
     ];
 }
