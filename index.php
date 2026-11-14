@@ -53,7 +53,7 @@ require_once "header.php"
                 </div>
             </div>
         </div>
-        <?php end foreach; ?>
+        <?php endforeach; ?>
     </div>
 </main>
 
